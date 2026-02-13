@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spider Man</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #0b0b0b;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      height: 90vh;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.9)
+        ),
+        url("https://wallpapercave.com/wp/wp1815638.jpg") center/cover
+          no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      color: #e62429;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    h2 {
+      color: #e62429;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      border-left: 6px solid #e62429;
+      padding-left: 15px;
+    }
+
+    .info {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .info img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .movies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .movie-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .movie-card h3 {
+      padding: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .fan-page {
+      background: #111;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .fan-page input {
+      padding: 10px;
+      width: 250px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .fan-page button {
+      padding: 10px 20px;
+      background: #e62429;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .fan-list {
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BANNER -->
+  <header>
+    <h1>Spider Man</h1>
+  </header>
+
+  <!-- INFO SECTION -->
+  <section>
+    <h2>About Spider-Man</h2>
+    <div class="info" id="info">
+      <img
+        src="https://i.pinimg.com/originals/3d/6f/4f/3d6f4f8a8a4f3c0cbd1c4c23f9d91c7c.jpg"
+        alt="Spider Man"
+      />
+      <p>
+        Spider-Man is one of the most iconic superheroes ever created. 
+        Known for his agility, intelligence, and web-slinging abilities,
+        Spider-Man represents responsibility, sacrifice, and resilience.
+        His famous rule: <strong>"With great power comes great responsibility."</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- MOVIES SECTION -->
+  <section>
+    <h2>Spider-Man Movies</h2>
+    <div class="movies">
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/81QnJglfT7L.jpg" />
+        <h3>Spider-Man (2002)</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/81EEn0cR6WL.jpg" />
+        <h3>Spider-Man 2 (2004)</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/91z5q9n3+BL.jpg" />
+        <h3>Spider-Man 3 (2007)</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/91a6+REp6QL.jpg" />
+        <h3>The Amazing Spider-Man (2012)</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/81Xo6IuTtUL.jpg" />
+        <h3>The Amazing Spider-Man 2 (2014)</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/91rGxFh5yDL.jpg" />
+        <h3>Spider-Man: Homecoming</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/91v8n6pELHL.jpg" />
+        <h3>Spider-Man: Far From Home</h3>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/I/91KkWf50SoL.jpg" />
+        <h3>Spider-Man: No Way Home</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAN PAGE -->
+  <section class="fan-page">
+    <h2>Spider-Man Fan Page</h2>
+    <p>Join the Spider-Man fan community!</p>
+    <br />
+    <input type="text" id="fanName" placeholder="Enter your name" />
+    <button onclick="addFan()">Join</button>
+
+    <div class="fan-list" id="fanList"></div>
+  </section>
+
+  <footer>
+    © 2026 Spider-Man Fan Website | Made with ❤️
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function addFan() {
+      const name = document.getElementById("fanName").value;
+      if (name.trim() === "") return;
+
+      const fanList = document.getElementById("fanList");
+      const p = document.createElement("p");
+      p.textContent = "🕷️ " + name + " is a Spider-Man fan!";
+      fanList.appendChild(p);
+
+      document.getElementById("fanName").value = "";
+    }
+  </script>
+
+</body>
+</html>

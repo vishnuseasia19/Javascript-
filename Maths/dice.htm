@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Dice Roll</title>
+
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .scene {
+      width: 120px;
+      height: 120px;
+      perspective: 600px;
+      margin-bottom: 20px;
+    }
+
+    .dice {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s ease-in-out;
+    }
+
+    .face {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      background: black;
+      border-radius: 50%;
+      align-self: center;
+      justify-self: center;
+    }
+
+    /* Dice faces positioning */
+    .one   { transform: rotateY(0deg) translateZ(60px); }
+    .two   { transform: rotateY(90deg) translateZ(60px); }
+    .three { transform: rotateY(180deg) translateZ(60px); }
+    .four  { transform: rotateY(-90deg) translateZ(60px); }
+    .five  { transform: rotateX(90deg) translateZ(60px); }
+    .six   { transform: rotateX(-90deg) translateZ(60px); }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="dice" id="dice">
+      <!-- 1 -->
+      <div class="face one">
+        <span class="dot"></span>
+      </div>
+
+      <!-- 2 -->
+      <div class="face two">
+        <span class="dot" style="grid-area:1/1"></span>
+        <span class="dot" style="grid-area:3/3"></span>
+      </div>
+
+      <!-- 3 -->
+      <div class="face three">
+        <span class="dot" style="grid-area:1/1"></span>
+        <span class="dot" style="grid-area:2/2"></span>
+        <span class="dot" style="grid-area:3/3"></span>
+      </div>
+
+      <!-- 4 -->
+      <div class="face four">
+        <span class="dot" style="grid-area:1/1"></span>
+        <span class="dot" style="grid-area:1/3"></span>
+        <span class="dot" style="grid-area:3/1"></span>
+        <span class="dot" style="grid-area:3/3"></span>
+      </div>
+
+      <!-- 5 -->
+      <div class="face five">
+        <span class="dot" style="grid-area:1/1"></span>
+        <span class="dot" style="grid-area:1/3"></span>
+        <span class="dot" style="grid-area:2/2"></span>
+        <span class="dot" style="grid-area:3/1"></span>
+        <span class="dot" style="grid-area:3/3"></span>
+      </div>
+
+      <!-- 6 -->
+      <div class="face six">
+        <span class="dot" style="grid-area:1/1"></span>
+        <span class="dot" style="grid-area:1/3"></span>
+        <span class="dot" style="grid-area:2/1"></span>
+        <span class="dot" style="grid-area:2/3"></span>
+        <span class="dot" style="grid-area:3/1"></span>
+        <span class="dot" style="grid-area:3/3"></span>
+      </div>
+    </div>
+  </div>
+
+  <button onclick="rollDice()">Roll Dice 🎲</button>
+
+  <script>
+    const dice = document.getElementById("dice");
+
+    function rollDice() {
+      let num = Math.floor(Math.random() * 6) + 1;
+      console.log(num);
+
+      const rotations = {
+        1: "rotateX(0deg) rotateY(0deg)",
+        2: "rotateY(-90deg)",
+        3: "rotateY(180deg)",
+        4: "rotateY(90deg)",
+        5: "rotateX(-90deg)",
+        6: "rotateX(90deg)"
+      };
+
+      dice.style.transform =
+        "rotateX(720deg) rotateY(720deg) " + rotations[num];
+    }
+  </script>
+
+</body>
+</html>
